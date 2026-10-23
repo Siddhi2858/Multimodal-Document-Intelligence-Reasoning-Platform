@@ -1,0 +1,88 @@
+{
+  "_readme": [
+    "Your test set. Edit this file; delete the keys starting with _ if you like.",
+    "documents: a short name -> path of a PDF (relative to the backend folder).",
+    "gold_pages: EVERY page that contains the answer (use: python -m evaluation.find_pages <pdf> \"term\").",
+    "type: factoid | table | multi-page | aggregation | unanswerable (any labels you like; results are grouped by it).",
+    "answerable: false for questions the document cannot answer (then gold_pages is not needed).",
+    "answer_contains: words/numbers a correct answer must contain (used only with --with-answers).",
+    "verified: set to true only after YOU confirmed the gold pages by reading the PDF.",
+    "The questions below are EXAMPLES with pages guessed from retrieval output. Verify every one before using the numbers."
+  ],
+  "documents": {
+    "paper": "storage/uploads/Research_Paper.pdf"
+  },
+  "questions": [
+    {
+      "id": "q01", "document": "paper", "type": "factoid",
+      "question": "What test set accuracy did the Random Forest classifier achieve?",
+      "gold_pages": [1, 2, 4, 5, 7],
+      "answer_contains": ["93.42"],
+      "verified": true
+    },
+    {
+      "id": "q02",
+      "document": "paper",
+      "type": "factoid",
+      "question": "How many records were used for training and how many for testing?",
+      "gold_pages": [4],
+      "answer_contains": ["5600", "1400"],
+      "verified": false
+    },
+    {
+      "id": "q03", "document": "paper", "type": "factoid",
+      "question": "How do users log in to the platform?",
+      "gold_pages": [2, 3],
+      "answer_contains": ["OTP"],
+      "verified": true
+    },
+    {
+      "id": "q04",
+      "document": "paper",
+      "type": "table",
+      "question": "What are the precision, recall and F1-score for the Poor class?",
+      "gold_pages": [5],
+      "answer_contains": ["0.94", "0.97", "0.95"],
+      "verified": false
+    },
+    {
+      "id": "q05",
+      "document": "paper",
+      "type": "table",
+      "question": "How many samples are in the test set of the confusion matrix?",
+      "gold_pages": [5],
+      "answer_contains": ["1,400"],
+      "verified": false
+    },
+    {
+      "id": "q06", "document": "paper", "type": "factoid",
+      "question": "What response time is the classifier inference call designed for?",
+      "gold_pages": [2, 6],
+      "answer_contains": ["200"],
+      "verified": true
+    },
+    {
+      "id": "q07",
+      "document": "paper",
+      "type": "multi-page",
+      "question": "Which technologies make up the platform's technology stack?",
+      "gold_pages": [1, 2, 3],
+      "answer_contains": ["FastAPI", "Firestore"],
+      "verified": false
+    },
+    {
+      "id": "q08",
+      "document": "paper",
+      "type": "unanswerable",
+      "question": "Who won the 2022 FIFA World Cup?",
+      "answerable": false
+    },
+    {
+      "id": "q09",
+      "document": "paper",
+      "type": "unanswerable",
+      "question": "What is the capital of France?",
+      "answerable": false
+    }
+  ]
+}

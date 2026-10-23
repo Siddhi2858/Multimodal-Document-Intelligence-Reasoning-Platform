@@ -1,0 +1,102 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --color-night: #0E1512;
+  --color-surface: #151F1A;
+  --color-raised: #1C2822;
+  --color-parchment: #ECE5D3;
+  --color-muted: #A9A28F;
+  --color-brass: #C8A25B;
+  --color-verdigris: #4F8A78;
+  --color-ember: #C65D3B;
+  --color-rule: #2B3A33;
+
+  --color-type-text: #9AA39A;
+  --color-type-table: #C8A25B;
+  --color-type-figure: #4F8A78;
+  --color-type-mixed: #C65D3B;
+
+  --font-serif: "Newsreader", Georgia, serif;
+  --font-sans: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --max-width-reading: 68ch;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #0E1512;
+  color: #ECE5D3;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.film-grain {
+  background-color: #0E1512;
+  background-image: radial-gradient(
+    rgba(200, 162, 91, 0.05) 0.5px,
+    transparent 0.5px
+  );
+  background-size: 8px 8px;
+}
+
+.masthead-double-rule {
+  border-top: 1px solid #2B3A33;
+  border-bottom: 1px solid #2B3A33;
+  height: 3px;
+}
+
+@keyframes sweepProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(25%);
+  }
+
+  100% {
+    transform: translateX(110%);
+  }
+}
+
+.animate-brass-sweep {
+  animation: sweepProgress 1.7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #151F1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2B3A33;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C8A25B;
+}
+
+:focus-visible {
+  outline: 2px solid #C8A25B !important;
+  outline-offset: 2px;
+}

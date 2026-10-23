@@ -1,0 +1,20 @@
+﻿id,type,answerable,verified,gold_pages,retrieved_pages,first_relevant_rank,rr,hit@1,hit@3,hit@5,recall@5,precision@5,best_score,pages_processed,context_words,context_tokens_est,retrieval_ms,found,keyword_hit,cited_pages,citation_supported,answer_ms,error,question,answer
+q01,factoid,True,False,2 4 7,4 5 7 2 8,1,1.0,1.0,1.0,1.0,1.0,0.6,0.7611,3,505,656,22.4,,,,,,"ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",What test set accuracy did the Random Forest classifier achieve?,
+q02,factoid,True,False,4,4 5 3,1,1.0,1.0,1.0,1.0,1.0,0.3333333333333333,0.4488,3,600,780,19.0,True,1.0,4,True,3524.0,,How many records were used for training and how many for testing?,"Approximately 5,600 records were used for training and 1,400 records were used for testing [page 4]."
+q03,factoid,True,False,3,2 8 1,,0.0,0.0,0.0,0.0,0.0,0.0,0.4702,2,600,780,19.6,,,,,,"ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",Which service handles user authentication and login?,
+q04,table,True,False,5,5 7 4 6 1,1,1.0,1.0,1.0,1.0,1.0,0.2,0.6398,2,580,754,25.1,True,1.0,5,True,72659.7,,"What are the precision, recall and F1-score for the Poor class?","For the Poor class, the metrics are:
+- **Precision:** 0.94 [page 5]
+- **Recall:** 0.97 [page 5]
+- **F1-Score:** 0.95 [page 5]"
+q05,table,True,False,5,5 4 7 3,1,1.0,1.0,1.0,1.0,1.0,0.25,0.5401,2,525,682,20.3,True,1.0,5,True,11654.9,,How many samples are in the test set of the confusion matrix?,"There are 1,400 samples in the test set of the confusion matrix [page 5]."
+q06,factoid,True,False,2,2 4 6 5 7 8,1,1.0,1.0,1.0,1.0,1.0,0.2,0.4582,3,447,581,21.6,,,,,,"ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",What response time is the classifier inference call designed for?,
+q07,multi-page,True,False,1 2 3,1 3 8 6 2 7,1,1.0,1.0,1.0,1.0,1.0,0.6,0.3922,5,508,660,27.0,True,1.0,1,True,23204.2,,Which technologies make up the platform's technology stack?,"The platform's technology stack comprises:
+- FastAPI [page 1]
+- Google Cloud Firestore [page 1]
+- Next.js [page 1]
+- React Native (Expo) [page 1]
+- Cloudinary [page 1]
+- Firebase Authentication [page 1]
+- Firebase Storage [page 1]"
+q08,unanswerable,False,True,,8 4 2 7 1,,,,,,,,0.1005,3,600,780,306.4,False,,,,0.0,,Who won the 2022 FIFA World Cup?,
+q09,unanswerable,False,True,,3 6 1 4 2 8,,,,,,,,0.1392,3,502,653,33.3,False,,,,0.0,,What is the capital of France?,

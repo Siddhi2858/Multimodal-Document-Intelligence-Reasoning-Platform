@@ -1,0 +1,357 @@
+{
+  "_readme": [
+    "DRAFT test set for Research_Paper.pdf, written by Claude. NOT final until YOU have verified it.",
+    "Text-answer labels were checked by script against the PDF's text layer. Figure-only labels were checked by viewing the figures and confirming the words are absent from the text layer.",
+    "For EVERY question: read the pages in gold_pages, decide whether any other page also answers it on its own, then set verified to true.",
+    "Rewrite about one third of the questions in your own words before running (these may echo the paper's phrasing).",
+    "Rule used for gold_pages: a page counts if it contains enough to answer the question on its own. For multi-page questions, every page that supplies a needed part counts.",
+    "Freeze this file (git commit) BEFORE running run_baseline. Do not edit labels after you see results."
+  ],
+  "documents": {
+    "paper": "storage/uploads/Research_Paper.pdf"
+  },
+  "questions": [
+    {
+      "id": "f01",
+      "document": "paper",
+      "type": "factoid",
+      "question": "Which versions of Python and scikit-learn were used when the model was trained?",
+      "gold_pages": [
+        4
+      ],
+      "answer_contains": [
+        "3.10",
+        "1.2"
+      ],
+      "verified": false,
+      "note": "Page 4, Section IV. Also shown in Fig. 3 (image) on page 6."
+    },
+    {
+      "id": "f02",
+      "document": "paper",
+      "type": "factoid",
+      "question": "On what platform was the model developed and trained?",
+      "gold_pages": [
+        4
+      ],
+      "answer_contains": [
+        "Colab"
+      ],
+      "verified": false,
+      "note": "Page 4, Section IV."
+    },
+    {
+      "id": "f03",
+      "document": "paper",
+      "type": "factoid",
+      "question": "How many rows and columns did the raw data contain before cleaning?",
+      "gold_pages": [
+        3
+      ],
+      "answer_contains": [
+        "68"
+      ],
+      "verified": false,
+      "note": "Page 3, Section III-B ('7000 rows and 68 columns'). Fig. 3 on page 6 also shows it, but only as an image."
+    },
+    {
+      "id": "f04",
+      "document": "paper",
+      "type": "factoid",
+      "question": "How much of the model's feature importance is attributed to the toilet-related feature?",
+      "gold_pages": [
+        5
+      ],
+      "answer_contains": [
+        "0.198"
+      ],
+      "verified": false,
+      "note": "Page 5, feature-importance text. The same value is drawn in Fig. 4 (page 7, image)."
+    },
+    {
+      "id": "f05",
+      "document": "paper",
+      "type": "factoid",
+      "question": "How fast was the inference service on average over the repeated test requests?",
+      "gold_pages": [
+        6
+      ],
+      "answer_contains": [
+        "173"
+      ],
+      "verified": false,
+      "note": "Page 6, Section V-F ('173 ms')."
+    },
+    {
+      "id": "f06",
+      "document": "paper",
+      "type": "factoid",
+      "question": "Which techniques do the authors plan to use later to explain the model's predictions?",
+      "gold_pages": [
+        7
+      ],
+      "answer_contains": [
+        "SHAP",
+        "LIME"
+      ],
+      "verified": false,
+      "note": "Page 7, Limitations and Future Work."
+    },
+    {
+      "id": "f07",
+      "document": "paper",
+      "type": "factoid",
+      "question": "By how much did the automated registrar system in prior work cut data entry time?",
+      "gold_pages": [
+        2
+      ],
+      "answer_contains": [
+        "40%"
+      ],
+      "verified": false,
+      "note": "Page 2, Related Work (Bagacay et al.)."
+    },
+    {
+      "id": "f08",
+      "document": "paper",
+      "type": "factoid",
+      "question": "What does the name of the system mean in English?",
+      "gold_pages": [
+        1
+      ],
+      "answer_contains": [
+        "Digital Recognition System"
+      ],
+      "verified": false,
+      "note": "Page 1, Introduction. The text layer splits the words as 'Recogni- tion' at a line break."
+    },
+    {
+      "id": "t01",
+      "document": "paper",
+      "type": "table",
+      "question": "How many Moderate-quality schools did the model classify correctly on the test set?",
+      "gold_pages": [
+        5
+      ],
+      "answer_contains": [
+        "560"
+      ],
+      "verified": false,
+      "note": "Page 5, Table IV (confusion matrix), the Moderate/Moderate cell."
+    },
+    {
+      "id": "t02",
+      "document": "paper",
+      "type": "table",
+      "question": "How many test samples belong to the Moderate class?",
+      "gold_pages": [
+        5
+      ],
+      "answer_contains": [
+        "602"
+      ],
+      "verified": false,
+      "note": "Page 5, Table III (per-class report), Support column."
+    },
+    {
+      "id": "t03",
+      "document": "paper",
+      "type": "table",
+      "question": "How do the weighted F1-scores on the training data and the test data compare?",
+      "gold_pages": [
+        5
+      ],
+      "answer_contains": [
+        "0.97",
+        "0.94"
+      ],
+      "verified": false,
+      "note": "Page 5, Table II and the sentence under it."
+    },
+    {
+      "id": "t04",
+      "document": "paper",
+      "type": "table",
+      "question": "Which existing system only partly supports a real-time admin dashboard?",
+      "gold_pages": [
+        7
+      ],
+      "answer_contains": [
+        "Digital Approval"
+      ],
+      "verified": false,
+      "note": "Page 7, Table V. Row 'Real-Time Admin Dashboard': Partial sits under 'Digital Approval System [7]'. Column alignment may be lost in extracted text."
+    },
+    {
+      "id": "t05",
+      "document": "paper",
+      "type": "table",
+      "question": "Which two of the existing systems offer only partial UDISE authentication?",
+      "gold_pages": [
+        7
+      ],
+      "answer_contains": [
+        "Web Portal",
+        "Doc Mgmt"
+      ],
+      "verified": false,
+      "note": "Page 7, Table V. Row 'UDISE Authentication': Partial under 'Web Portal' and 'India Doc Mgmt [8]'. Column alignment may be lost in extracted text."
+    },
+    {
+      "id": "e01",
+      "document": "paper",
+      "type": "equation",
+      "question": "How is the safety score calculated from the raw facility columns?",
+      "gold_pages": [
+        3
+      ],
+      "answer_contains": [
+        "ramps",
+        "handrails"
+      ],
+      "verified": false,
+      "note": "Page 3, equation (7). The formula is also paraphrased on page 5 in the feature-importance text; decide if that counts."
+    },
+    {
+      "id": "m01",
+      "document": "paper",
+      "type": "multi-page",
+      "question": "Which two features matter most to the model, and how is each of them calculated?",
+      "gold_pages": [
+        3,
+        5
+      ],
+      "answer_contains": [
+        "0.231",
+        "0.198"
+      ],
+      "verified": false,
+      "note": "Importance scores: page 5 (Classroom 0.231, Toilet 0.198). Formulas: page 3, equations (1) and (2)."
+    },
+    {
+      "id": "m02",
+      "document": "paper",
+      "type": "multi-page",
+      "question": "What was the average response time of the prediction endpoint, and what upper limit was it designed to stay under?",
+      "gold_pages": [
+        2,
+        6
+      ],
+      "answer_contains": [
+        "173",
+        "200"
+      ],
+      "verified": false,
+      "note": "173 ms on page 6; the '<200 ms' design limit on pages 2 and 6."
+    },
+    {
+      "id": "m03",
+      "document": "paper",
+      "type": "multi-page",
+      "question": "Why might the reported accuracy overstate how well the system would work in real schools?",
+      "gold_pages": [
+        3,
+        4,
+        5,
+        7
+      ],
+      "answer_contains": [
+        "semi-synthetic"
+      ],
+      "verified": false,
+      "note": "Semi-synthetic labels: page 3 (Section III-E). Rule-based labels learnable: pages 4-5 (V-A). Limitation stated: page 7. Page 8 (conclusion) also mentions it; add it if you think it answers on its own."
+    },
+    {
+      "id": "g01",
+      "document": "paper",
+      "type": "figure-only",
+      "question": "Besides the web application and the mobile app, what third client does the architecture diagram show?",
+      "gold_pages": [
+        3
+      ],
+      "answer_contains": [
+        "Public Portal"
+      ],
+      "verified": false,
+      "note": "Figure only: Fig. 1 on page 3 shows 'Public Portal (Web Browser)'. The words 'Public Portal' are not in the text layer."
+    },
+    {
+      "id": "g02",
+      "document": "paper",
+      "type": "figure-only",
+      "question": "Where do schools rated Moderate go in the application workflow?",
+      "gold_pages": [
+        4
+      ],
+      "answer_contains": [
+        "Standard Queue"
+      ],
+      "verified": false,
+      "note": "Figure only: Fig. 2 on page 4, 'Moderate -> Standard Queue'. The text mentions only Poor and Good."
+    },
+    {
+      "id": "g03",
+      "document": "paper",
+      "type": "figure-only",
+      "question": "What happens to a school whose application the administrator rejects?",
+      "gold_pages": [
+        4
+      ],
+      "answer_contains": [
+        "resubmission"
+      ],
+      "verified": false,
+      "note": "Figure only: Fig. 2 on page 4, 'Rejection: school notified with reasons for resubmission'."
+    },
+    {
+      "id": "g04",
+      "document": "paper",
+      "type": "figure-only",
+      "question": "Which district does the training data come from, according to the pipeline diagram?",
+      "gold_pages": [
+        6
+      ],
+      "answer_contains": [
+        "2725"
+      ],
+      "verified": false,
+      "note": "Figure only: Fig. 3 on page 6 ('District 2725', file 2725_fac.csv)."
+    },
+    {
+      "id": "u01",
+      "document": "paper",
+      "type": "unanswerable",
+      "question": "What accuracy did the XGBoost model reach on the test set?",
+      "answerable": false,
+      "verified": false,
+      "note": "Not in the paper. XGBoost is never mentioned; the paper uses only a Random Forest."
+    },
+    {
+      "id": "u02",
+      "document": "paper",
+      "type": "unanswerable",
+      "question": "How many schools took part in the pilot deployment?",
+      "answerable": false,
+      "verified": false,
+      "note": "Not in the paper. No pilot deployment is reported."
+    },
+    {
+      "id": "u03",
+      "document": "paper",
+      "type": "unanswerable",
+      "question": "What was the recall of the model when tested on schools from a different district?",
+      "answerable": false,
+      "verified": false,
+      "note": "Not in the paper. All data comes from one district; no external test."
+    },
+    {
+      "id": "u04",
+      "document": "paper",
+      "type": "unanswerable",
+      "question": "What does it cost per month to host the cloud platform?",
+      "answerable": false,
+      "verified": false,
+      "note": "Not in the paper. No hosting cost is given."
+    }
+  ]
+}
