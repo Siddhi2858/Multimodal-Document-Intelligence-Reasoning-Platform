@@ -15,7 +15,7 @@ interface ProcessingPageProps {
 const STEPS = [
   {
     title: "Reading the PDF",
-    label: "Extracting the text of every page",
+    label: "Extracting the text of every page (scanned pages are read with OCR)",
   },
   {
     title: "Splitting into passages",
@@ -104,17 +104,17 @@ export function ProcessingPage({
 
         {!isReady && !isFailed && (
           <p className="border-t border-rule pt-4 font-sans text-xs text-muted">
-            This page updates by itself. Processing usually takes under a minute,
-            and the first document after starting the server can take longer
-            while the language model loads.
+            This page updates by itself. A digital PDF usually takes under a minute.
+            Scanned pages are read with OCR, which takes several seconds per page,
+            and the first document after starting the server can take longer.
           </p>
         )}
 
         {isFailed && (
           <div className="space-y-3 border-t border-rule pt-4">
             <p className="font-sans text-xs text-ember">
-              Processing failed. The file may be a scanned PDF (text recognition
-              for scans is not supported yet) or may be damaged.
+              Processing failed. The file may be damaged, empty, or a scan that could
+              not be read (OCR needs Tesseract installed on the server).
             </p>
             <Button variant="secondary" onClick={onBackDesk}>
               ← Back to Dashboard

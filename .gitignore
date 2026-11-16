@@ -1,6 +1,43 @@
+# Backend: Python virtual environment
 backend/venv/
+venv/
+.venv/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
 backend/.env
+
+# Backend generated storage
 backend/storage/
+
+# Python cache
+__pycache__/
 **/__pycache__/
+*.py[cod]
+*$py.class
+
+# Node dependencies
+node_modules/
 **/node_modules/
+
+# Frontend build output
 frontend/dist/
+dist/
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test and coverage artifacts
+.pytest_cache/
+.coverage
+htmlcov/

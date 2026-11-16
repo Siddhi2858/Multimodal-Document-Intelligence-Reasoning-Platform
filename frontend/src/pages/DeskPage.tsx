@@ -103,7 +103,7 @@ export function DeskPage({
               </span>
             </p>
             <p className="mt-1.5 font-sans text-xs text-muted">
-              PDF format · Up to 50 MB · Text-based PDFs
+              PDF format · Up to 50 MB · Digital or scanned
             </p>
 
             <div className="mt-4">
