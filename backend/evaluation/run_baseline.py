@@ -37,7 +37,8 @@ from evaluation.metrics import (
     recall_at_k,
     reciprocal_rank,
 )
-from ingestion.chunker import CHUNK_OVERLAP_WORDS, CHUNK_SIZE_WORDS
+from ingestion.chunker import CHUNK_OVERLAP_WORDS, CHUNK_SIZE_WORDS, FIGURE_CHUNK_WORDS
+from ingestion.pdf_parser import FIGURE_OCR
 from ingestion.pipeline import ingest_pdf
 from retrieval import embedder
 from retrieval.embedder import embed_query
@@ -374,7 +375,7 @@ def load_resume(path: Path, current_config: dict) -> dict[str, dict]:
     previous = json.loads(path.read_text(encoding="utf-8"))
     old = previous["config"]
 
-    for key in ("chunk_size_words", "chunk_overlap_words", "embedding_model", "llm_model"):
+    for key in ("chunk_size_words", "chunk_overlap_words", "figure_ocr", "figure_chunk_words", "embedding_model", "llm_model"):
         if old.get(key) != current_config.get(key):
             raise SystemExit(
                 f"Cannot resume: '{key}' differs (earlier run: {old.get(key)!r}, now: {current_config.get(key)!r}). "
@@ -396,8 +397,16 @@ def run(
     retries: int = 2,
     resume: Path | None = None,
     max_failures: int = 2,
+    document_overrides: dict[str, str] | None = None,
 ) -> dict:
     test_set = load_test_set(questions_path)
+
+    # Point the same questions at another file (for example a scanned copy).
+    for key, path in (document_overrides or {}).items():
+        if key not in test_set["documents"]:
+            raise SystemExit(f"--document {key}=...: the questions file has no document called '{key}' "
+                             f"(it has: {', '.join(test_set['documents'])})")
+        test_set["documents"][key] = path
 
     config = {
         "run_at": datetime.now().isoformat(timespec="seconds"),
@@ -405,6 +414,8 @@ def run(
         "documents": test_set["documents"],
         "chunk_size_words": CHUNK_SIZE_WORDS,
         "chunk_overlap_words": CHUNK_OVERLAP_WORDS,
+        "figure_ocr": FIGURE_OCR,
+        "figure_chunk_words": FIGURE_CHUNK_WORDS,
         "embedding_model": embedder.MODEL_NAME,
         "chunks_retrieved": RETRIEVE_CHUNKS,
         "chunks_sent_to_llm": CONTEXT_CHUNKS,
@@ -483,6 +494,8 @@ def main() -> None:
     parser.add_argument("--retries", type=int, default=2, help="extra attempts when an LLM call fails")
     parser.add_argument("--resume", help="earlier results .json: reuse its successful answers, request only the missing ones")
     parser.add_argument("--max-failures", type=int, default=2, help="stop asking the LLM after this many failures in a row")
+    parser.add_argument("--document", action="append", default=[], metavar="KEY=PATH",
+                        help="use another PDF for a document key, e.g. paper=evaluation/data/scanned/Research_Paper_typical.pdf")
     parser.add_argument("--skip-ingest", action="store_true", help="reuse chunks already stored from a previous run")
     args = parser.parse_args()
 
@@ -494,6 +507,7 @@ def main() -> None:
     outcome = run(
         questions_path, args.with_answers, args.delay, args.skip_ingest, args.retries,
         Path(args.resume) if args.resume else None, args.max_failures,
+        dict(item.split("=", 1) for item in args.document),
     )
     print_report(outcome["summary"], outcome["by_type"], args.with_answers)
 

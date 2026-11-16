@@ -9,11 +9,16 @@ can later be traced back to a page (this is what makes citations work).
 Chunks never cross page boundaries. That keeps citations exact.
 """
 
+import os
 import re
 
-CHUNK_SIZE_WORDS = 120      # target words per chunk
+CHUNK_SIZE_WORDS = 120      # target words per chunk (chosen after the Phase 3 retrieval experiments)
 CHUNK_OVERLAP_WORDS = 20    # words shared between neighbouring chunks
 MIN_CHUNK_WORDS = 15        # drop tiny leftovers (page numbers, headers)
+FIGURE_PREFIX = "Figure labels: "   # tells the reader (and the LLM) the text came from inside a picture
+# Figure text is a list of short labels, not prose: small, focused chunks match a question better
+# than one 120-word blur of many boxes. Override with  FIGURE_CHUNK_WORDS=80  to experiment.
+FIGURE_CHUNK_WORDS = int(os.getenv("FIGURE_CHUNK_WORDS", "40"))
 
 
 def clean_text(text: str) -> str:
@@ -56,11 +61,35 @@ def chunk_page(
     return chunks
 
 
+def chunk_figure(text: str, max_words: int = FIGURE_CHUNK_WORDS) -> list[str]:
+    """
+    Split figure text (one label fragment per line, see ocr/figures.py) into chunks of about
+    max_words words. A fragment is never cut in half; the last fragment of a chunk is repeated
+    at the start of the next one (overlap). Fragments are joined with ' | '.
+    """
+    fragments = [" ".join(line.split()) for line in text.split("\n") if line.strip()]
+    chunks: list[list[str]] = []
+    current: list[str] = []
+    count = 0
+    for fragment in fragments:
+        size = len(fragment.split())
+        if current and count + size > max_words:
+            chunks.append(current)
+            current = current[-1:]
+            count = len(current[0].split())
+        current.append(fragment)
+        count += size
+    if current:
+        chunks.append(current)
+    return [" | ".join(parts) for parts in chunks]
+
+
 def chunk_document(document_id: str, pages: list[dict]) -> list[dict]:
     """
     Turn the output of parse_pdf() into a flat list of chunks:
         {"chunk_id": "doc1-p4-c2", "document_id": "doc1",
-         "page_number": 4, "text": "..."}
+         "page_number": 4, "source": "native", "text": "..."}
+    Text found inside figures becomes extra chunks with source "figure_ocr".
     """
     all_chunks: list[dict] = []
 
@@ -75,9 +104,23 @@ def chunk_document(document_id: str, pages: list[dict]) -> list[dict]:
                     "chunk_id": f"{document_id}-p{page['page_number']}-c{i}",
                     "document_id": document_id,
                     "page_number": page["page_number"],
+                    "source": page.get("source", "native"),   # "native" text layer or "ocr"
                     "text": piece,
                 }
             )
+
+        # Text read inside figures: its own chunks, so labels stay together and do not dilute page text.
+        for f, figure in enumerate(page.get("figures") or [], start=1):
+            for i, piece in enumerate(chunk_figure(figure["text"]), start=1):
+                all_chunks.append(
+                    {
+                        "chunk_id": f"{document_id}-p{page['page_number']}-f{f}-c{i}",
+                        "document_id": document_id,
+                        "page_number": page["page_number"],
+                        "source": "figure_ocr",
+                        "text": FIGURE_PREFIX + piece,
+                    }
+                )
 
     return all_chunks
 

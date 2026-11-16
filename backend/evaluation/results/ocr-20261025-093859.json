@@ -1,0 +1,295 @@
+{
+  "pdf": "storage\\uploads\\Research_Paper.pdf",
+  "pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "created": "2026-10-25T09:37:31",
+  "conditions": {
+    "clean": {
+      "settings": {
+        "dpi": 200,
+        "jpeg_quality": 95,
+        "rotate_deg": 0.0,
+        "blur": 0.0,
+        "noise": 0.0
+      },
+      "summary": {
+        "pages_scored": 8,
+        "cer": 0.2245625,
+        "wer": 0.27492500000000003,
+        "word_f1": 0.9100874999999999,
+        "cer_pages_without_figures": 0.1231,
+        "word_f1_pages_without_figures": 0.9849,
+        "avg_confidence": 0.91975,
+        "avg_seconds_per_page": 3.9775
+      },
+      "pages": [
+        {
+          "page": 1,
+          "figure_on_page": false,
+          "cer": 0.0021,
+          "wer": 0.0143,
+          "word_f1": 0.9873,
+          "confidence": 0.941,
+          "seconds": 5.17
+        },
+        {
+          "page": 2,
+          "figure_on_page": false,
+          "cer": 0.0013,
+          "wer": 0.0083,
+          "word_f1": 0.9917,
+          "confidence": 0.95,
+          "seconds": 4.94
+        },
+        {
+          "page": 3,
+          "figure_on_page": true,
+          "cer": 0.3169,
+          "wer": 0.4183,
+          "word_f1": 0.8662,
+          "confidence": 0.845,
+          "seconds": 3.86
+        },
+        {
+          "page": 4,
+          "figure_on_page": true,
+          "cer": 0.4881,
+          "wer": 0.5248,
+          "word_f1": 0.7869,
+          "confidence": 0.906,
+          "seconds": 4.03
+        },
+        {
+          "page": 5,
+          "figure_on_page": false,
+          "cer": 0.1774,
+          "wer": 0.226,
+          "word_f1": 0.988,
+          "confidence": 0.943,
+          "seconds": 3.65
+        },
+        {
+          "page": 6,
+          "figure_on_page": true,
+          "cer": 0.397,
+          "wer": 0.4716,
+          "word_f1": 0.8085,
+          "confidence": 0.906,
+          "seconds": 3.39
+        },
+        {
+          "page": 7,
+          "figure_on_page": true,
+          "cer": 0.1021,
+          "wer": 0.17,
+          "word_f1": 0.8795,
+          "confidence": 0.935,
+          "seconds": 3.54
+        },
+        {
+          "page": 8,
+          "figure_on_page": false,
+          "cer": 0.3116,
+          "wer": 0.3661,
+          "word_f1": 0.9726,
+          "confidence": 0.932,
+          "seconds": 3.24
+        }
+      ]
+    },
+    "typical": {
+      "settings": {
+        "dpi": 150,
+        "jpeg_quality": 60,
+        "rotate_deg": 0.4,
+        "blur": 0.0,
+        "noise": 4.0
+      },
+      "summary": {
+        "pages_scored": 8,
+        "cer": 0.21555,
+        "wer": 0.2590875,
+        "word_f1": 0.928125,
+        "cer_pages_without_figures": 0.122525,
+        "word_f1_pages_without_figures": 0.988425,
+        "avg_confidence": 0.927,
+        "avg_seconds_per_page": 3.745
+      },
+      "pages": [
+        {
+          "page": 1,
+          "figure_on_page": false,
+          "cer": 0.0015,
+          "wer": 0.0111,
+          "word_f1": 0.9897,
+          "confidence": 0.945,
+          "seconds": 3.94
+        },
+        {
+          "page": 2,
+          "figure_on_page": false,
+          "cer": 0.001,
+          "wer": 0.0071,
+          "word_f1": 0.9929,
+          "confidence": 0.949,
+          "seconds": 4.55
+        },
+        {
+          "page": 3,
+          "figure_on_page": true,
+          "cer": 0.3543,
+          "wer": 0.3846,
+          "word_f1": 0.9538,
+          "confidence": 0.921,
+          "seconds": 3.55
+        },
+        {
+          "page": 4,
+          "figure_on_page": true,
+          "cer": 0.4512,
+          "wer": 0.5046,
+          "word_f1": 0.7947,
+          "confidence": 0.883,
+          "seconds": 3.9
+        },
+        {
+          "page": 5,
+          "figure_on_page": false,
+          "cer": 0.1774,
+          "wer": 0.2232,
+          "word_f1": 0.9894,
+          "confidence": 0.94,
+          "seconds": 3.75
+        },
+        {
+          "page": 6,
+          "figure_on_page": true,
+          "cer": 0.3308,
+          "wer": 0.391,
+          "word_f1": 0.835,
+          "confidence": 0.925,
+          "seconds": 3.38
+        },
+        {
+          "page": 7,
+          "figure_on_page": true,
+          "cer": 0.098,
+          "wer": 0.1917,
+          "word_f1": 0.8878,
+          "confidence": 0.926,
+          "seconds": 3.62
+        },
+        {
+          "page": 8,
+          "figure_on_page": false,
+          "cer": 0.3102,
+          "wer": 0.3594,
+          "word_f1": 0.9817,
+          "confidence": 0.927,
+          "seconds": 3.27
+        }
+      ]
+    },
+    "poor": {
+      "settings": {
+        "dpi": 100,
+        "jpeg_quality": 35,
+        "rotate_deg": 1.2,
+        "blur": 0.8,
+        "noise": 10.0
+      },
+      "summary": {
+        "pages_scored": 8,
+        "cer": 0.353025,
+        "wer": 0.45506250000000004,
+        "word_f1": 0.6748875,
+        "cer_pages_without_figures": 0.44695,
+        "word_f1_pages_without_figures": 0.59955,
+        "avg_confidence": 0.770625,
+        "avg_seconds_per_page": 2.89875
+      },
+      "pages": [
+        {
+          "page": 1,
+          "figure_on_page": false,
+          "cer": 0.4087,
+          "wer": 0.4522,
+          "word_f1": 0.6784,
+          "confidence": 0.848,
+          "seconds": 2.72
+        },
+        {
+          "page": 2,
+          "figure_on_page": false,
+          "cer": 0.2668,
+          "wer": 0.3183,
+          "word_f1": 0.7631,
+          "confidence": 0.844,
+          "seconds": 3.56
+        },
+        {
+          "page": 3,
+          "figure_on_page": true,
+          "cer": 0.3236,
+          "wer": 0.4567,
+          "word_f1": 0.736,
+          "confidence": 0.812,
+          "seconds": 3.01
+        },
+        {
+          "page": 4,
+          "figure_on_page": true,
+          "cer": 0.1547,
+          "wer": 0.2257,
+          "word_f1": 0.8248,
+          "confidence": 0.84,
+          "seconds": 2.93
+        },
+        {
+          "page": 5,
+          "figure_on_page": false,
+          "cer": 0.3364,
+          "wer": 0.4294,
+          "word_f1": 0.7483,
+          "confidence": 0.778,
+          "seconds": 3.35
+        },
+        {
+          "page": 6,
+          "figure_on_page": true,
+          "cer": 0.1885,
+          "wer": 0.3365,
+          "word_f1": 0.8018,
+          "confidence": 0.795,
+          "seconds": 2.83
+        },
+        {
+          "page": 7,
+          "figure_on_page": true,
+          "cer": 0.3696,
+          "wer": 0.4683,
+          "word_f1": 0.6383,
+          "confidence": 0.778,
+          "seconds": 2.65
+        },
+        {
+          "page": 8,
+          "figure_on_page": false,
+          "cer": 0.7759,
+          "wer": 0.9534,
+          "word_f1": 0.2084,
+          "confidence": 0.47,
+          "seconds": 2.14
+        }
+      ]
+    }
+  }
+}

@@ -76,11 +76,19 @@ def _process_document(document_id: str, pdf_path: Path) -> None:
     """Background job: parse -> chunk -> embed -> store, then mark the document ready."""
     try:
         summary = ingest_pdf(pdf_path, document_id=document_id)
+        scanned = len(summary["ocr_pages"])
+        if scanned == summary["page_count"]:
+            label = "Scanned document (OCR)"
+        elif scanned:
+            label = f"Mixed document ({scanned} scanned page{'s' if scanned != 1 else ''}, OCR)"
+        else:
+            label = "Text document (not yet classified)"
+
         update_document(
             document_id,
             page_count=summary["page_count"],
             processing_status="ready",
-            classification="Text document (not yet classified)",
+            classification=label,
         )
     except Exception:
         logger.exception("Processing failed for %s", document_id)

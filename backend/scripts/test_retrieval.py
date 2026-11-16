@@ -16,7 +16,7 @@ from ingestion.pipeline import ingest_pdf
 from retrieval.embedder import embed_query
 from retrieval.vector_store import search
 
-TOP_K = 5
+TOP_K = 3
 SNIPPET_CHARS = 220
 
 
@@ -29,7 +29,7 @@ def main() -> None:
     summary = ingest_pdf(sys.argv[1])
     print(
         f"Done: {summary['page_count']} pages, {summary['chunk_count']} chunks "
-        f"in {summary['seconds']}s. OCR needed on pages: {summary['ocr_pages'] or 'none'}"
+        f"in {summary['seconds']}s. OCR used on pages: {summary['ocr_pages'] or 'none'}"
     )
 
     document_id = summary["document_id"]
